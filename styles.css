@@ -1,0 +1,35 @@
+*{
+    padding:0px;
+    margin: 0px;
+    font-family: "Montserrat";
+}
+body{
+    background-color: #333842;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr 20fr;
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+
+    background-color: #1f2229;
+}
+.logo{
+    display: flex;
+    align-self: center;
+    color:#798191;
+    font-size: 30px;
+    font-weight: 600;
+}
+.signin, a{
+    display: flex;
+    margin-right: 1vw;
+    align-self: center;
+    text-decoration: none;
+    color: #798191;
+    
+}
+a:visited{
+    color: #798191;
+}
