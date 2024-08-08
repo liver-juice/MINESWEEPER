@@ -17,6 +17,17 @@ function Gameboard(){
         };
         // we now have a bunch of rows, containing tile instances,
         // stored in board array.
+        // we must apply the mines~
+        let remainingMines = mines;
+        while (remainingMines > 0){
+        board.forEach((row) => {
+            row.forEach((tile) => {
+                //console.log(tile.isMine);
+                //tile.generateMines() // 1 in 20 chance. if returns true, subtract,
+                // from remaining.
+            })
+        })
+        }
     };
 
     const getBoard = () => {
@@ -32,6 +43,15 @@ function Tile(){
     let isMine = false;
     let isHidden = true; // tile isnt uncovered
     let isFlagged = false;
+
+    const generateMines = () => {
+        // 1 in 20 chance of turning this tile to a mine. (isMine = true;)
+
+        //gen random num 1-20
+        // if num === 1;
+        // isMine = true;
+        // return true;
+    }
 
     return {};
 }
@@ -49,9 +69,10 @@ function GameController(){
     let rows = 10;
     let cols = 10;
     let mines = 20;
+
     //create the board itself.
     board.generateBoard(rows, cols, mines)
-    console.log(board.getBoard());
+    //console.log(board.getBoard());
 
 }
 
