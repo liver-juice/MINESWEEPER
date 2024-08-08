@@ -33,3 +33,8 @@ body{
 a:visited{
     color: #798191;
 }
+.boardcontainer{
+    display: grid;
+    border: 1px solid black;
+    margin: 50px;
+}
