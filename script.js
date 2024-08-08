@@ -1,60 +1,60 @@
+Tile;
+
 function Gameboard(){
     //the board object itself
     let board = [];
-    
-    const generateBoard = (rows, cols, mines) => {
-        //create a grid/board of Tile() instances, with given rows and cols.
+    const generateBoard = (rows, cols) => {
         for (let i = 0; i < rows; i++){
-            //create a new row. 
             let newRow = [];
-            //then we fill that mf
             for (let j = 0; j < cols; j++){
-                let newTile = Tile();
-                newRow.push(newTile);
+                let newCol = [];
+                newRow.push(newCol);
             }
             board.push(newRow);
-            
-        };
-        // we now have a bunch of rows, containing tile instances,
-        // stored in board array.
-        // we must apply the mines~
-        let remainingMines = mines;
-        while (remainingMines > 0){
-        board.forEach((row) => {
-            row.forEach((tile) => {
-                //console.log(tile.isMine);
-                //tile.generateMines() // 1 in 20 chance. if returns true, subtract,
-                // from remaining.
-            })
-        })
         }
+        return board;
     };
-
+    
+                //randNum = Math.ceil(Math.random() * 20);
+                //if (randNum === 1)
     const getBoard = () => {
         //returns the board.
         return board;
     }
 
     return{generateBoard, getBoard};
+
 }
 
-function Tile(){
+
+function Tile(isMine){
     //each tile within the Gameboard is its own instantiation.
-    let isMine = false;
     let isHidden = true; // tile isnt uncovered
     let isFlagged = false;
 
-    const generateMines = () => {
+    const generateMine = () => {
+        // called at start, creates the mine tiles.
         // 1 in 20 chance of turning this tile to a mine. (isMine = true;)
 
         //gen random num 1-20
-        // if num === 1;
+        randNum = Math.ceil(Math.random() * 20); // rand num 1-20;
+
         // isMine = true;
         // return true;
     }
 
-    return {};
+    
+
+    const clicked = () => {
+        if (isMine === true){
+            console.log('game over.');
+        }
+    }
+
+
+    return {generateMine, clicked};
 }
+
 
 function GameController(){
     //the logos
@@ -70,9 +70,10 @@ function GameController(){
     let cols = 10;
     let mines = 20;
 
-    //create the board itself.
+    //create the board itself. applies the mines.
     board.generateBoard(rows, cols, mines)
-    //console.log(board.getBoard());
+
+    console.log(board.getBoard());
 
 }
 
