@@ -4,7 +4,6 @@ function Gameboard(){
     const generateBoard = (rows, cols, mines) => {
         // reference the board object itself.
         let boardcontainer = document.querySelector('.boardcontainer');
-        boardcontainer.textContent = "TESTANG";
         //create a grid of the given rows and cols.
         // each slot in the grid needs to be a Tile() instance but also an html div..
         for (let i = 0; i < rows; i++){
@@ -15,8 +14,11 @@ function Gameboard(){
             for (let j = 0; j < cols; j++){
                 let newTile = document.createElement('div');
                 newTile.classList.add('tile')
+                newRow.appendChild(newTile);
             }
+            boardcontainer.appendChild(newRow);
         };
+        // we now have a bunch of rows, containing tile nodes, stored in boardcontainer.
     };
 
     return{generateBoard};
