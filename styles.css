@@ -37,7 +37,9 @@ a:visited{
     display: grid;
     border: 1px solid black;
     margin: 50px;
-    grid-template-rows: repeat(10, 1fr);
+    grid-template: repeat(10, 1fr)/1fr;
+    place-items: center;
+    
 }
 .row{
     display: flex;
