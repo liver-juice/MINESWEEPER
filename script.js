@@ -1,5 +1,3 @@
-Tile;
-
 function Gameboard(){
     //the board object itself
     let board = [];
@@ -9,71 +7,66 @@ function Gameboard(){
             for (let j = 0; j < cols; j++){
                 let newCol = [];
                 newRow.push(newCol);
-            }
-            board.push(newRow);
-        }
-        return board;
-    };
-    
+            }board.push(newRow);
+        }return board;};
+
                 //randNum = Math.ceil(Math.random() * 20);
                 //if (randNum === 1)
-    const getBoard = () => {
-        //returns the board.
-        return board;
-    }
-
-    return{generateBoard, getBoard};
-
+    return{generateBoard};
 }
 
 
-function Tile(isMine){
+function Mine(){
     //each tile within the Gameboard is its own instantiation.
     let isHidden = true; // tile isnt uncovered
     let isFlagged = false;
 
-    const generateMine = () => {
-        // called at start, creates the mine tiles.
-        // 1 in 20 chance of turning this tile to a mine. (isMine = true;)
 
-        //gen random num 1-20
-        randNum = Math.ceil(Math.random() * 20); // rand num 1-20;
+    return{}
+}
 
-        // isMine = true;
-        // return true;
-    }
-
-    
-
-    const clicked = () => {
-        if (isMine === true){
-            console.log('game over.');
-        }
-    }
+function nonMine(){
+    //each tile within the Gameboard is its own instantiation.
+    let isHidden = true; // tile isnt uncovered
+    let isFlagged = false;
 
 
-    return {generateMine, clicked};
+    return{}
 }
 
 
 function GameController(){
-    //the logos
-    
-    //create the board object
     board = Gameboard();
 
-    // grab the board input data from the user.
-    // let rows = document.querySelector('.rowsinput').innerHTML;
-    // let cols = document.querySelector('.colsinput').innerHTML;
-    // let mines = document.querySelector('.minesinput').innerHTML;
     let rows = 10;
-    let cols = 10;
+    let cols = 10;  // dummy datas
     let mines = 20;
 
-    //create the board itself. applies the mines.
-    board.generateBoard(rows, cols, mines)
+    let theBoard = board.generateBoard(rows, cols);
+    // place the mines. works
+    while (mines > 0){
+        theBoard.forEach((row) => {
+            row.forEach((col) => {
+                let randNum = Math.ceil(Math.random() * 20);
+                if (randNum === 1){
+                    col.push(Mine());
+                    mines--;
+                }
+            })
+        })
+    }
+    console.log(theBoard);
+    // fill in the nonMines.
+    theBoard.forEach((row) => {
+        row.forEach((col) => {
+            if (col.length === 0){
+                col.push(nonMine());
+            }
+        })
+    })
+    
+    
 
-    console.log(board.getBoard());
 
 }
 
